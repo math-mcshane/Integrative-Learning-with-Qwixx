@@ -1,0 +1,97 @@
+---
+output: 
+  pdf_document:
+    pandoc_args: "--highlight-style=lab-knit-files/mcshanepdf.theme"
+    latex_engine: lualatex        # Only needed for custom fonts
+header-includes: 
+ - \newcommand{\lecture}{Dr. McShane}
+ - \newcommand{\students}{Duo \# X -- YOUR NAME(S)}
+ - \newcommand{\chtitle}{Qwixx Strategy Brainstorm}
+ - \newcommand{\lecdate}{3/30/2021}
+ - \definecolor{codegray}{HTML}{f9f9f9}
+ - \definecolor{codeletter}{HTML}{002c6b}
+ - \let\textttOrig\texttt
+ - \renewcommand{\texttt}[1]{\textttOrig{\textbf{\textcolor{codeletter}{\colorbox{codegray}{#1}}}}}
+ - \usepackage{fontspec}          # Only needed for custom fonts
+ - \setmainfont{Jost-Regular}[Extension=.ttf,Path=lab-knit-files/,BoldFont=Jost-Bold,ItalicFont=Jost-Italic,BoldItalicFont=Jost-BoldItalic]
+bibliography: lab-knit-files/references.bib
+csl: lab-knit-files/ASA-McShane.csl
+urlcolor: blue
+linestretch: 1.5
+---
+
+```{r include = FALSE}
+hook_chunk = knitr::knit_hooks$get('chunk')
+ls.flag = rmarkdown::metadata$linestretch
+ls.flag = ifelse(is.null(ls.flag), TRUE, ls.flag != 1.5)
+
+if (!ls.flag){
+knitr::knit_hooks$set(chunk = function(x, options) {
+  regular_output = hook_chunk(x, options)
+  # add latex commands if chunk option singlespacing is TRUE
+  if (isTRUE(options$singlespacing)) sprintf("\\setstretch{1} \\small \n %s \n \\setstretch{1.5} \\normalsize", regular_output)
+  else regular_output
+})}
+
+knitr::opts_chunk$set(   # This is for later! Don't worry about it now. 
+  echo = FALSE,          # Don't show code.
+  warning = FALSE,       # Don't show warnings.
+  message = FALSE,       # Don't show messages (less serious warnings).
+  fig.align = "center",  # Center figures.
+  fig.width = 5,         # Size figures nicely by default
+  fig.height = 3,        # Size figures nicely by default
+  dev = "cairo_pdf",     # Enable this to use custom fonts
+  singlespacing = TRUE   # Makes code single spaced and returns to 1.5
+)
+library(tidyverse)       # Load libraries you always use here.
+library(kableExtra)
+library(cowplot)
+
+set.seed(18)             # Make random results reproducible
+theme_set(theme_bw())    # Uses clean ggplot2 theme
+```
+
+<!-- Don't delete this -->
+\rule{6.5in}{2pt}
+\large \textbf{STAT375: Statistical Aspects of Competition \hfill \lecture}
+
+\textbf{\chtitle \hfill \lecdate \hfill Students: \students} \normalsize
+\rule{6.5in}{2pt}
+<!-- Don't delete this -->
+
+## Brainstorm: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- don't delete and don't write below this line -->
+
+<!-- # References -->
+
+`r ifelse(!ls.flag, yes = sprintf("\\setstretch{1}"), no = "")`
+
